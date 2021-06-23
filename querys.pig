@@ -3,8 +3,6 @@ big5 = LOAD 'hdfs://cm:9000/uhadoop2021/grupo_patos/data-final.tsv' USING PigSto
 -- Line 1: Filter raw to make sure type equals 'THEATRICAL_MOVIE' 
 movies = FILTER raw BY type == 'THEATRICAL_MOVIE';
 
--- Nada
-
 -- Line 2: Generate new relation with full movie name (concatenating title+##+year+##+num) and actor
 full_movies = FOREACH movies GENERATE CONCAT(title,'##',year,'##',num), actor;
 
